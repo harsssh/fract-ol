@@ -12,7 +12,7 @@ NAME=fract-ol
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(MAIN) $(OBJ) $(HEADER)
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -Llibft -Lmlx -lft -lmlx -framework OpenGL -framework Appkit $(OBJ) $(MAIN)
+	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -Llibft -Lmlx -lft -lmlx $(OBJ) $(MAIN)
 
 $(LIBFT):
 	make -C libft

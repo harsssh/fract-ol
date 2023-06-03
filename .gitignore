@@ -1,4 +1,4 @@
 a.out
 *.o
 fract-ol
-libmlx.a
+libmlx.dylib
