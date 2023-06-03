@@ -2,3 +2,7 @@ a.out
 *.o
 fract-ol
 libmlx.dylib
+compile_commands.json
+.cache
+*.swiftdoc
+*.swiftmodule
