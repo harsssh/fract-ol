@@ -1,8 +1,6 @@
-CFLAGS=-Wall -Wextra -Werror -Ilibft -Imlx -Iinclude
-SRC=$(wildcard src/lib/*.c)
-HEADER=$(wildcard include/*.h)
+CFLAGS=-Wall -Wextra -Werror -Ilibft -Imlx
+SRC=$(wildcard src/lib/*.c) src/main.c
 OBJ=$(SRC:.c=.o)
-MAIN=src/main.c
 LIBFT=libft/libft.a
 MLX=mlx/libmlx.dylib
 NAME=fract-ol
@@ -10,8 +8,8 @@ NAME=fract-ol
 .PHONY: all
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX) $(MAIN) $(OBJ) $(HEADER)
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -Llibft -Lmlx -lft -lmlx $(OBJ) $(MAIN)
+$(NAME): $(LIBFT) $(MLX) $(OBJ)
+	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -Llibft -Lmlx -lft -lmlx $(OBJ)
 
 $(LIBFT):
 	make -C libft
