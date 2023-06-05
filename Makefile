@@ -48,4 +48,4 @@ fclean: clean
 .PHONY: re
 re: fclean all
 
--include $(DEPS)
+-include $(DEP)
