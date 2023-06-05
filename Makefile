@@ -1,15 +1,31 @@
-CFLAGS=-Wall -Wextra -Werror -Ilibft -Imlx
-SRC=$(wildcard src/lib/*.c) src/main.c
-OBJ=$(SRC:.c=.o)
-LIBFT=libft/libft.a
-MLX=mlx/libmlx.dylib
-NAME=fract-ol
+NAME:=fract-ol
+
+LIBFT:=libft/libft.a
+MLX:=mlx/libmlx.dylib
+
+SRC_DIR=src
+BUILD_DIR:=build
+
+CFLAGS:=-Wall -Wextra -Werror -Ilibft -Imlx
+DEPFLAGS=-MT $@ -MMD -MP -MF $(BUILD_DIR)/$*.d
+
+SRC:=$(wildcard $(SRC_DIR)/lib/*.c) $(wildcard src/*.c)
+OBJ:=$(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRC))
+DEP:=$(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.d,$(SRC))
 
 .PHONY: all
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJ)
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -Llibft -Lmlx -lft -lmlx $(OBJ)
+	$(CC) $(CFLAGS) -Llibft -Lmlx -lft -lmlx -o $@ $(OBJ)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(BUILD_DIR)/%.d | $(BUILD_DIR) $(BUILD_DIR)/lib
+	$(CC) $(CFLAGS) $(DEPFLAGS) $(INCLUDE) -c -o $@ $<
+
+$(DEP):
+
+$(BUILD_DIR) $(BUILD_DIR)/lib:
+	@mkdir -p $@
 
 $(LIBFT):
 	make -C libft
@@ -22,7 +38,7 @@ $(MLX):
 clean:
 	make -C libft clean
 	make -C mlx clean
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(DEP)
 
 .PHONY: fclean
 fclean: clean
@@ -31,3 +47,5 @@ fclean: clean
 
 .PHONY: re
 re: fclean all
+
+-include $(DEPS)
