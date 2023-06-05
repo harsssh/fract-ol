@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 15:54:16 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/03 17:16:09 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:59:28 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096
-# elif BUFFER_SIZE < 0
-#  undef BUFFER_SIZE
-#  define BUFFER_SIZE 0
 # endif
 
 # include <stdbool.h>
