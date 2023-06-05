@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 21:37:21 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/05 22:35:47 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/06 00:44:48 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	put_pixel(t_canvas *canvas, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	render(t_canvas *canvas)
+void	put_image(t_canvas *canvas)
 {
 	t_canvas_impl	*impl;
 
