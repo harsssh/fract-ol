@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 20:50:26 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/05 22:43:45 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/06 01:49:45 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,16 @@
 #include <mlx.h>
 #include <stdlib.h>
 
-static t_canvas_impl	*new_canvas_impl(int width, int height, char *title)
+static void	set_image_and_window(t_canvas_impl *impl, int w, int h, char *title)
+{
+	impl->img = mlx_new_image(impl->mlx, w, h);
+	if (impl->img != NULL)
+		impl->addr = mlx_get_data_addr(impl->img, &impl->bits_per_pixel,
+				&impl->line_length, &impl->endian);
+	impl->window = mlx_new_window(impl->mlx, w, h, title);
+}
+
+static t_canvas_impl	*new_canvas_impl(int w, int h, char *title)
 {
 	t_canvas_impl	*impl;
 
@@ -28,11 +37,7 @@ static t_canvas_impl	*new_canvas_impl(int width, int height, char *title)
 		free(impl);
 		return (NULL);
 	}
-	impl->img = mlx_new_image(impl->mlx, width, height);
-	if (impl->img != NULL)
-		impl->addr = mlx_get_data_addr(impl->img, &impl->bits_per_pixel,
-				&impl->line_length, &impl->endian);
-	impl->window = mlx_new_window(impl->mlx, width, height, title);
+	set_image_and_window(impl, w, h, title);
 	if (impl->img == NULL || impl->window == NULL)
 	{
 		free(impl->img);
@@ -68,3 +73,4 @@ void	free_canvas(t_canvas *canvas)
 	free(canvas->p_impl);
 	free(canvas);
 }
+

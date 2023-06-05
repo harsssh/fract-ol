@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 20:40:46 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 00:44:12 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/06 01:49:51 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_canvas
 t_canvas	*new_canvas(int width, int height, char *title);
 void		free_canvas(t_canvas *canvas);
 void		put_pixel(t_canvas *canvas, int x, int y, int color);
-void		put_image(t_canvas *canvas);
+void		render(t_canvas *canvas);
 void		start(t_canvas *canvas);
 
 #endif
