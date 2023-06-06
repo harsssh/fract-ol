@@ -6,14 +6,14 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 01:05:25 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 12:51:49 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 01:32:40 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "lib/canvas.h"
 #include "lib/color.h"
-#include "lib/ft_complex.h"
+#include "lib/complex.h"
 #include <math.h>
 #include <stddef.h>
 
@@ -58,7 +58,7 @@ void	draw_mandelbrot_set(t_canvas *cv, t_range r, size_t max_iter)
 		j = 0;
 		while (j < (size_t)cv->width)
 		{
-			complex_set(&z, transform_re(cv, r, j), transform_im(cv, r, i));
+			complex_set(&z, convert_to_re(cv, r, j), convert_to_im(cv, r, i));
 			count = count_diverged(z, max_iter);
 			v = count % 8 * 32;
 			put_pixel(cv, j, i, create_trgb(0, v, v, v));

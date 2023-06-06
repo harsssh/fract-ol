@@ -6,11 +6,11 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:24:36 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 12:24:59 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 01:56:38 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_complex.h"
+#include "complex.h"
 
 void	complex_set(t_complex *z, double re, double im)
 {
