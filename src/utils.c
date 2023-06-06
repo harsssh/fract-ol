@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 22:28:08 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 12:57:26 by kemizuki         ###   ########.fr       */
+/*   Created: 2023/06/06 12:27:08 by kemizuki          #+#    #+#             */
+/*   Updated: 2023/06/06 12:48:48 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "lib/canvas.h"
 #include "lib/ft_complex.h"
-#include <stddef.h>
 
-int	main(int ac, char **av)
+double	transform_re(t_canvas *canvas, t_range r, int x)
 {
-	t_canvas	*canvas;
-	t_range		range;
-	t_complex	c;
+	return (r.min.re + (r.max.re - r.min.re) * x / canvas->width);
+}
 
-	(void)ac;
-	canvas = new_canvas(WIDTH, HEIGHT, av[0]);
-	if (canvas == NULL)
-		return (1);
-	complex_set(&range.min, -2.0, -2.0);
-	complex_set(&range.max, 2.0, 2.0);
-	complex_set(&c, -0.8, 0.15);
-	//draw_mandelbrot_set(canvas, range, 64);
-	draw_julia_set(canvas, range, c, 64);
-	render(canvas);
-	start(canvas);
+double	transform_im(t_canvas *canvas, t_range r, int x)
+{
+	return (r.min.im + (r.max.im - r.min.im) * x / canvas->height);
 }

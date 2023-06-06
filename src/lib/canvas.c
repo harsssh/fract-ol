@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 20:50:26 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 01:49:45 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:57:52 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,3 @@ void	free_canvas(t_canvas *canvas)
 	free(canvas->p_impl);
 	free(canvas);
 }
-

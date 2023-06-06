@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 01:05:25 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 12:51:49 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/06 12:55:18 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@ static double	next_im(t_complex z, t_complex c)
 	return (2 * z.re * z.im + c.im);
 }
 
-static size_t	count_diverged(t_complex c, size_t max_iter)
+static size_t	count_diverged(t_complex z, t_complex c, size_t max_iter)
 {
 	size_t		i;
-	t_complex	z;
 
-	complex_set(&z, 0, 0);
 	i = 0;
 	while (i < max_iter)
 	{
@@ -44,7 +42,7 @@ static size_t	count_diverged(t_complex c, size_t max_iter)
 	return (max_iter);
 }
 
-void	draw_mandelbrot_set(t_canvas *cv, t_range r, size_t max_iter)
+void	draw_julia_set(t_canvas *cv, t_range r, t_complex c, size_t max_iter)
 {
 	size_t			i;
 	size_t			j;
@@ -59,7 +57,7 @@ void	draw_mandelbrot_set(t_canvas *cv, t_range r, size_t max_iter)
 		while (j < (size_t)cv->width)
 		{
 			complex_set(&z, transform_re(cv, r, j), transform_im(cv, r, i));
-			count = count_diverged(z, max_iter);
+			count = count_diverged(z, c, max_iter);
 			v = count % 8 * 32;
 			put_pixel(cv, j, i, create_trgb(0, v, v, v));
 			j++;
