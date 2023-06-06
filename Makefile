@@ -6,7 +6,7 @@ MLX:=mlx/libmlx.dylib
 SRC_DIR=src
 BUILD_DIR:=build
 
-CFLAGS:=-Wall -Wextra -Werror -Ilibft -Imlx
+CFLAGS:=-Wall -Wextra -Werror -Ilibft -Imlx -I/usr/X11/include
 DEPFLAGS=-MT $@ -MMD -MP -MF $(BUILD_DIR)/$*.d
 
 SRC:=$(wildcard $(SRC_DIR)/lib/*.c) $(wildcard src/*.c)

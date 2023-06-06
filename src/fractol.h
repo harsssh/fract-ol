@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 22:29:13 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 12:54:55 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:17:32 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ void	draw_julia_set(t_canvas *cv, t_range r, t_complex c, size_t max_iter);
 
 double	transform_re(t_canvas *canvas, t_range r, int x);
 double	transform_im(t_canvas *canvas, t_range r, int x);
+
+int		key_handler(int keycode, t_canvas *canvas);
+int		close_window(t_canvas *canvas);
 
 #endif

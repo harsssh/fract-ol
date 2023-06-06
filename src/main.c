@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 22:28:08 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 12:57:26 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:55:18 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ int	main(int ac, char **av)
 	canvas = new_canvas(WIDTH, HEIGHT, av[0]);
 	if (canvas == NULL)
 		return (1);
+	handle_key_event(canvas, key_handler, canvas);
+	handle_close_event(canvas, close_window, canvas);
 	complex_set(&range.min, -2.0, -2.0);
 	complex_set(&range.max, 2.0, 2.0);
 	complex_set(&c, -0.8, 0.15);
-	//draw_mandelbrot_set(canvas, range, 64);
-	draw_julia_set(canvas, range, c, 64);
+	draw_mandelbrot_set(canvas, range, 64);
+	//draw_julia_set(canvas, range, c, 64);
 	render(canvas);
 	start(canvas);
 }
