@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:57:45 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 21:55:40 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 00:59:29 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 #include "internal.h"
 #include <X11/X.h>
 #include <mlx.h>
+#include <stddef.h>
 
-void	handle_mouse_event(t_canvas *canvas, int (*f)(), void *param)
+void	on_keyup(t_canvas *cv, int (*f)(), void *param)
 {
-	mlx_mouse_hook(canvas->p_impl->window, f, param);
+	mlx_key_hook(cv->p_impl->window, f, param);
 }
 
-void	handle_key_event(t_canvas *canvas, int (*f)(), void *param)
+void	on_destroy(t_canvas *cv, int (*f)(), void *param)
 {
-	mlx_key_hook(canvas->p_impl->window, f, param);
+	mlx_hook(cv->p_impl->window, DestroyNotify, StructureNotifyMask, f, param);
 }
 
-void	handle_close_event(t_canvas *canvas, int (*f)(), void *param)
+void	clear_event_handler(t_canvas *cv)
 {
-	mlx_hook(canvas->p_impl->window, DestroyNotify, StructureNotifyMask, f, param);
+	on_keyup(cv, NULL, NULL);
+	on_destroy(cv, NULL, NULL);
+	mlx_mouse_hook(cv->p_impl->window, NULL, NULL);
+	mlx_expose_hook(cv->p_impl->window, NULL, NULL);
+	mlx_loop_hook(cv->p_impl->mlx, NULL, NULL);
 }
-

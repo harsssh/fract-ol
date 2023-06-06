@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 22:28:08 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 21:55:18 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 00:57:57 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "lib/canvas.h"
 #include "lib/ft_complex.h"
 #include <stddef.h>
+#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
@@ -25,8 +26,8 @@ int	main(int ac, char **av)
 	canvas = new_canvas(WIDTH, HEIGHT, av[0]);
 	if (canvas == NULL)
 		return (1);
-	handle_key_event(canvas, key_handler, canvas);
-	handle_close_event(canvas, close_window, canvas);
+	on_keyup(canvas, key_handler, canvas);
+	on_destroy(canvas, terminate, canvas);
 	complex_set(&range.min, -2.0, -2.0);
 	complex_set(&range.max, 2.0, 2.0);
 	complex_set(&c, -0.8, 0.15);

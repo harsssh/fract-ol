@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:00:40 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 22:07:19 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 00:57:36 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	close_window(t_canvas *canvas)
+int	terminate(t_canvas *canvas)
 {
+	clear_event_handler(canvas);
 	free_canvas(canvas);
 	exit(0);
 }
@@ -25,6 +26,6 @@ int	close_window(t_canvas *canvas)
 int	key_handler(int keycode, t_canvas *canvas)
 {
 	if (keycode == KEY_ESCAPE)
-		close_window(canvas);
+		terminate(canvas);
 	return (0);
 }
