@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 22:28:08 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/07 22:59:54 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:14:22 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	init_range(t_range *range)
 static void	init_context(t_context *ctx)
 {
 	ctx->max_iter = DEFAULT_MAX_ITER;
-	ctx->draw_fractal = draw_mandelbrot_set;
+	ctx->draw_fractal = draw_julia_set;
+	complex_set(&ctx->julia_param, -0.345, 0.654);
 	init_range(&ctx->range);
 	init_event_handler(ctx);
 }
@@ -45,7 +46,7 @@ int	main(int ac, char **av)
 	if (ctx.canvas == NULL)
 		return (1);
 	init_context(&ctx);
-	draw_mandelbrot_set(ctx);
+	ctx.draw_fractal(ctx);
 	render(ctx.canvas);
 	start(ctx.canvas);
 	return (0);
