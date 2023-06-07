@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:27:08 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/07 14:38:30 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 23:00:27 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 #include "lib/canvas.h"
 #include "lib/complex.h"
 
-double	convert_to_re(t_canvas *canvas, t_range r, int x)
+static double	to_re(t_context ctx, int x)
 {
-	return (r.corner.re + x * r.length / canvas->width);
+	return (ctx.range.corner.re + x * ctx.range.length / ctx.canvas->width);
 }
 
-double	convert_to_im(t_canvas *canvas, t_range r, int y)
+static double	to_im(t_context ctx, int y)
 {
-	return (r.corner.im + y * r.length / canvas->height);
+	return (ctx.range.corner.im + y * ctx.range.length / ctx.canvas->height);
 }
 
+void	convert_to_complex(t_context ctx, t_complex *z, int x, int y)
+{
+	complex_set(z, to_re(ctx, x), to_im(ctx, y));
+}

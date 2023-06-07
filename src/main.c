@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 22:28:08 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/07 15:29:15 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 22:59:54 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,38 @@
 #include <stddef.h>
 #include <stdio.h>
 
-static void	init_event_handler(t_canvas_with_range *env)
+static void	init_event_handler(t_context *ctx)
 {
-	on_key_down(env->canvas, key_handler, env->canvas);
-	on_destroy(env->canvas, terminate, env->canvas);
-	on_mouse_use(env->canvas, mouse_handler, env);
+	on_key_down(ctx->canvas, key_handler, ctx);
+	on_mouse_use(ctx->canvas, mouse_handler, ctx);
+	on_destroy(ctx->canvas, terminate, ctx);
 }
 
 static void	init_range(t_range *range)
 {
 	complex_set(&range->corner, DEFAULT_RE_MIN, DEFAULT_IM_MIN);
-    range->length = DEFAULT_LENGTH;
+	range->length = DEFAULT_LENGTH;
 }
 
-static void init(t_canvas_with_range *env)
+static void	init_context(t_context *ctx)
 {
-	init_range(&env->range);
-	init_event_handler(env);
+	ctx->max_iter = DEFAULT_MAX_ITER;
+	ctx->draw_fractal = draw_mandelbrot_set;
+	init_range(&ctx->range);
+	init_event_handler(ctx);
 }
 
 int	main(int ac, char **av)
 {
-	t_canvas_with_range env;
+	t_context	ctx;
 
 	(void)ac;
-	env.canvas = new_canvas(WIDTH, HEIGHT, av[0]);
-	if (env.canvas == NULL)
+	ctx.canvas = new_canvas(WIDTH, HEIGHT, av[0]);
+	if (ctx.canvas == NULL)
 		return (1);
-	init(&env);
-	draw_mandelbrot_set(env.canvas, env.range, 64);
-	put_pixel(env.canvas, env.canvas->width/2, env.canvas->height/2, 0x00FF0000);
-	render(env.canvas);
-	start(env.canvas);
+	init_context(&ctx);
+	draw_mandelbrot_set(ctx);
+	render(ctx.canvas);
+	start(ctx.canvas);
 	return (0);
 }

@@ -6,12 +6,12 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:37:55 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/07 14:48:38 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 22:11:16 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_COMPLEX_H
-# define FT_COMPLEX_H
+#ifndef COMPLEX_H
+# define COMPLEX_H
 
 # include <math.h>
 
