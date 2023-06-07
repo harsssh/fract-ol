@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 22:29:13 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/08 03:35:29 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/08 03:37:52 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIDTH 720
 # define HEIGHT 720
-# define JULIA_PRAM_RADIUS 0.5
+# define JULIA_PRAM_RADIUS 0.67
 # define DEFAULT_MAX_ITER 64
 # define DEFAULT_RE_MIN -2.0
 # define DEFAULT_IM_MIN -2.0
