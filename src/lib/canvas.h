@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 20:40:46 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/07 01:56:07 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 13:04:06 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		put_pixel(t_canvas *canvas, int x, int y, int color);
 void		render(t_canvas *canvas);
 void		start(t_canvas *canvas);
 
-void		on_keyup(t_canvas *canvas, int (*f)(), void *param);
+void		on_keydown(t_canvas *canvas, int (*f)(), void *param);
 void		on_destroy(t_canvas *canvas, int (*f)(), void *param);
 void		clear_event_handler(t_canvas *canvas);
 

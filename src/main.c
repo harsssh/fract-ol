@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 22:28:08 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/07 02:00:59 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 13:04:14 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static void init_event_handler(t_canvas *canvas)
 {
-	on_keyup(canvas, key_handler, canvas);
+	on_keydown(canvas, key_handler, canvas);
 	on_destroy(canvas, terminate, canvas);
 }
 
