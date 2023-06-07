@@ -14,7 +14,6 @@
 #include "lib/canvas.h"
 #include "lib/complex.h"
 #include <stddef.h>
-#include <stdio.h>
 
 static void	init_event_handler(t_context *ctx)
 {
