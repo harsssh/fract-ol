@@ -20,6 +20,8 @@
 # define DEFAULT_IM_MIN -2.0
 # define DEFAULT_LENGTH 4.0
 # define SCALE_FACTOR 1.2
+# define COLOR_SATURATION 0.55
+# define COLOR_VALUE 0.65
 
 # include "lib/canvas.h"
 # include "lib/complex.h"

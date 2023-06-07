@@ -57,7 +57,7 @@ void	draw_julia_set(t_context ctx)
 			convert_to_complex(ctx, &z, j, i);
 			count = count_diverged(z, ctx.julia_param, ctx.max_iter);
 			v = count % 8 * 32;
-			put_pixel(ctx.canvas, j, i, create_trgb(0, v, v, v));
+			put_pixel(ctx.canvas, j, i, create_rgb(v, v, v));
 			j++;
 		}
 		i++;

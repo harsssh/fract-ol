@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 01:05:25 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/07 22:59:43 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/07 23:44:04 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,18 @@ static size_t	count_diverged(t_complex c, size_t max_iter)
 	return (max_iter);
 }
 
+static double	calc_hue(size_t count, size_t max_iter)
+{
+	return (fmod((double)count / (double)max_iter * 360.0 + 230.0, 360));
+}
+
 void	draw_mandelbrot_set(t_context ctx)
 {
-	size_t			i;
-	size_t			j;
-	t_complex		z;
-	size_t			count;
-	unsigned char	v;
+	size_t		i;
+	size_t		j;
+	t_complex	z;
+	double		hue;
+	int			color;
 
 	i = 0;
 	while (i < (size_t)ctx.canvas->height)
@@ -57,9 +62,9 @@ void	draw_mandelbrot_set(t_context ctx)
 		while (j < (size_t)ctx.canvas->width)
 		{
 			convert_to_complex(ctx, &z, j, i);
-			count = count_diverged(z, ctx.max_iter);
-			v = count % 8 * 32;
-			put_pixel(ctx.canvas, j, i, create_trgb(0, v, v, v));
+			hue = calc_hue(count_diverged(z, ctx.max_iter), ctx.max_iter);
+			color = hsv_to_rgb(hue, COLOR_SATURATION, COLOR_VALUE);
+			put_pixel(ctx.canvas, j, i, color);
 			j++;
 		}
 		i++;
