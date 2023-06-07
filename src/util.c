@@ -16,11 +16,11 @@
 
 double	convert_to_re(t_canvas *canvas, t_range r, int x)
 {
-	return (r.min.re + (r.max.re - r.min.re) * x / canvas->width);
+	return (r.corner.re + x * r.length / canvas->width);
 }
 
 double	convert_to_im(t_canvas *canvas, t_range r, int y)
 {
-	return (r.min.im + (r.max.im - r.min.im) * y / canvas->height);
+	return (r.corner.im + y * r.length / canvas->height);
 }
 

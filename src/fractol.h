@@ -16,9 +16,8 @@
 # define WIDTH 720
 # define HEIGHT 720
 # define DEFAULT_RE_MIN -2.0
-# define DEFAULT_RE_MAX 2.0
 # define DEFAULT_IM_MIN -2.0
-# define DEFAULT_IM_MAX 2.0
+# define DEFAULT_LENGTH 4.0
 # define SCALE_FACTOR 1.2
 
 # include "lib/canvas.h"
@@ -27,8 +26,8 @@
 
 typedef struct s_range
 {
-	t_complex	min;
-	t_complex	max;
+	t_complex	corner;
+    double      length;
 }				t_range;
 
 typedef struct s_canvas_with_range

@@ -25,8 +25,8 @@ static void	init_event_handler(t_canvas_with_range *env)
 
 static void	init_range(t_range *range)
 {
-	complex_set(&range->min, DEFAULT_RE_MIN, DEFAULT_IM_MIN);
-	complex_set(&range->max, DEFAULT_RE_MAX, DEFAULT_IM_MAX);
+	complex_set(&range->corner, DEFAULT_RE_MIN, DEFAULT_IM_MIN);
+    range->length = DEFAULT_LENGTH;
 }
 
 static void init(t_canvas_with_range *env)
