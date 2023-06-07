@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:45:49 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/06 21:48:54 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:36:41 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@
 #  define KEY_SPACE 0x0031
 
 #  define KEY_LEFT 0x007b
-#  define KEY_UP 0x007e
 #  define KEY_RIGHT 0x007c
 #  define KEY_DOWN 0x007d
+#  define KEY_UP 0x007e
 
 #  define KEY_F1 0x007a
 #  define KEY_F2 0x0078

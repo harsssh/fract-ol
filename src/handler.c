@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:00:40 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/07 22:59:58 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:40:18 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,29 @@
 #include "lib/mousecode.h"
 #include <stdlib.h>
 
+static void	shift(int key, t_context *ctx)
+{
+	t_complex	*z;
+	double		amount;
+
+	z = &ctx->range.corner;
+	amount = ctx->range.length / 16;
+	if (key == KEY_RIGHT)
+		z->re += amount;
+	else if (key == KEY_LEFT)
+		z->re -= amount;
+	else if (key == KEY_UP)
+		z->im -= amount;
+	else if (key == KEY_DOWN)
+		z->im += amount;
+}
+
+static int	is_arrow(int key)
+{
+	return (key == KEY_RIGHT || key == KEY_LEFT || key == KEY_UP
+		|| key == KEY_DOWN);
+}
+
 int	terminate(t_context *ctx)
 {
 	clear_event_handler(ctx->canvas);
@@ -24,10 +47,15 @@ int	terminate(t_context *ctx)
 	exit(0);
 }
 
-int	key_handler(int keycode, t_context *ctx)
+int	key_handler(int key, t_context *ctx)
 {
-	if (keycode == KEY_ESCAPE)
+	if (key == KEY_ESCAPE)
 		terminate(ctx);
+	else if (is_arrow(key))
+	{
+		shift(key, ctx);
+		redraw(*ctx);
+	}
 	return (0);
 }
 
@@ -46,8 +74,6 @@ int	mouse_handler(int button, int x, int y, t_context *ctx)
 	convert_to_complex(*ctx, &center, x, y);
 	ctx->range.length *= scale;
 	complex_scale(&ctx->range.corner, center, scale);
-	clear_image(ctx->canvas);
-	ctx->draw_fractal(*ctx);
-	render(ctx->canvas);
+	redraw(*ctx);
 	return (0);
 }

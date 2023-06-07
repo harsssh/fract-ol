@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 22:29:13 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/07 23:00:16 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:33:49 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ void			draw_mandelbrot_set(t_context ctx);
 void			draw_julia_set(t_context ctx);
 
 void			convert_to_complex(t_context ctx, t_complex *z, int x, int y);
+void			redraw(t_context ctx);
 
-int				key_handler(int keycode, t_context *ctx);
+int				key_handler(int key, t_context *ctx);
 int				mouse_handler(int button, int x, int y, t_context *ctx);
 int				terminate(t_context *ctx);
 
