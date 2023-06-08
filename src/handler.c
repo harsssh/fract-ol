@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:00:40 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/08 00:40:18 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:09:13 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,16 @@ int	mouse_handler(int button, int x, int y, t_context *ctx)
 	t_complex	center;
 
 	if (button == MOUSE_SCROLL_UP)
+	{
 		scale = 1 / SCALE_FACTOR;
+		ctx->max_iter += ITER_STEP;
+	}
 	else if (button == MOUSE_SCROLL_DOWN)
+	{
 		scale = SCALE_FACTOR;
+		if (ctx->max_iter - ITER_STEP >= MIN_ITER)
+			ctx->max_iter -= ITER_STEP;
+	}
 	else
 		return (0);
 	y = ctx->canvas->height - y;
