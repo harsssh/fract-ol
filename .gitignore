@@ -1,6 +1,6 @@
 a.out
 *.o
-fract-ol
+fractol
 libmlx.dylib
 compile_commands.json
 .cache

@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 01:30:14 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/08 03:25:34 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:00:17 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	print_error(char *s)
 
 static void	print_usage(void)
 {
-	print_error("Usage: fract-ol <fractal_type> [angle]\n");
+	print_error("Usage: fractol <fractal_type> [angle]\n");
 	print_error("  fractal_type: Specify fractal type (mandelbrot or julia)\n");
 	print_error("  angle:        Specify angle for Julia parameter (0-360)\n");
 }

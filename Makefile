@@ -1,4 +1,4 @@
-NAME:=fract-ol
+NAME:=fractol
 
 LIBFT:=libft/libft.a
 MLX:=mlx/libmlx.dylib
