@@ -48,4 +48,6 @@ fclean: clean
 .PHONY: re
 re: fclean all
 
+ifneq ($(MAKECMDGOALS),clean)
 -include $(DEP)
+endif
