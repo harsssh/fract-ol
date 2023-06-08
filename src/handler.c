@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:00:40 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/08 15:09:13 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:18:04 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	mouse_handler(int button, int x, int y, t_context *ctx)
 	else if (button == MOUSE_SCROLL_DOWN)
 	{
 		scale = SCALE_FACTOR;
-		if (ctx->max_iter - ITER_STEP >= MIN_ITER)
+		if (ctx->max_iter - ITER_STEP >= DEFAULT_MAX_ITER)
 			ctx->max_iter -= ITER_STEP;
 	}
 	else
