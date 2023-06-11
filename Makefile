@@ -19,7 +19,7 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(MLX) $(OBJ)
 	$(CC) $(CFLAGS) -Llibft -Lmlx -lft -lmlx -lm -o $@ $(OBJ)
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(BUILD_DIR)/%.d | $(BUILD_DIR) $(BUILD_DIR)/lib
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR) $(BUILD_DIR)/lib
 	$(CC) $(CFLAGS) $(DEPFLAGS) $(INCLUDE) -c -o $@ $<
 
 $(DEP):
@@ -48,6 +48,4 @@ fclean: clean
 .PHONY: re
 re: fclean all
 
-ifneq ($(MAKECMDGOALS),clean)
 -include $(DEP)
-endif
