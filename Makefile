@@ -9,7 +9,7 @@ BUILD_DIR:=build
 CFLAGS:=-Wall -Wextra -Werror -Ilibft -Imlx -I/usr/X11/include
 DEPFLAGS=-MT $@ -MMD -MP -MF $(BUILD_DIR)/$*.d
 
-SRC:=$(wildcard $(SRC_DIR)/lib/*.c) $(wildcard src/*.c)
+SRC:=src/args.c src/handler.c src/julia.c src/lib/canvas.c src/lib/color.c src/lib/complex.c src/lib/draw.c src/lib/hook.c src/lib/util.c src/main.c src/mandelbrot.c src/util.c
 OBJ:=$(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRC))
 DEP:=$(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.d,$(SRC))
 
