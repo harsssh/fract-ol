@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:27:08 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/06/08 00:33:33 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:57:04 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	convert_to_complex(t_context ctx, t_complex *z, int x, int y)
 
 void	redraw(t_context ctx)
 {
-	clear_image(ctx.canvas);
 	ctx.draw_fractal(ctx);
 	render(ctx.canvas);
 }
